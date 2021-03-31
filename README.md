@@ -8,8 +8,7 @@
 ![GitHub contributors](https://img.shields.io/github/contributors/<username>/<repository>)
 ![GitHub last commit](https://img.shields.io/github/last-commit/<username>/<repository>)
 
-
-Stack: NestJS + Typescript + Postgres + Redis + GraphQL. 
+Stack: NestJS + Typescript + Postgres + Redis + GraphQL.
 
 ## Installation
 
