@@ -14,9 +14,6 @@ export class App {
 	public async bootstrap(port?: number) {
 		const app = await NestFactory.create(AppModule(this.dbURL))
 		await app.listen(port ?? 3000)
-		const { schema } = app.get(GraphQLSchemaHost);
-		console.log(schema)
-		await fs.writeFile("schema.gql", printSchema(schema))
 		this.app = app
 	}
 }
