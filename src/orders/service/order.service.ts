@@ -158,8 +158,8 @@ export class OrderService extends BaseEntityService(Order) {
 		const document = gql`
         mutation GenInvoice($seller:String!,$buyer:String!,$balance:Float!, $for:String!) {
             transact(data:{
-                from:$seller,
-                to:$buyer,
+                from:$buyer,
+                to:$seller,
                 balance:$balance,
                 for:$for
             }) {
