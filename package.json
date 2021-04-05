@@ -42,7 +42,7 @@
 		"graphql": "^15.5.0",
 		"graphql-request": "^3.4.0",
 		"graphql-tools": "^7.0.2",
-		"husky": "^5.0.8",
+
 		"passport": "^0.4.1",
 		"passport-local": "^1.0.0",
 		"pg": "^8.5.1",
@@ -59,6 +59,7 @@
 		"@types/bcrypt": "^3.0.0",
 		"@types/express": "^4.17.8",
 		"@types/jest": "^26.0.15",
+		"husky": "^5.0.8",
 		"@types/node": "^14.14.6",
 		"@types/supertest": "^2.0.10",
 		"@typescript-eslint/eslint-plugin": "^4.6.1",
@@ -95,7 +96,7 @@
 	},
 	"husky": {
 		"hooks": {
-			"pre-push": "yarn run check:fix"
+			"pre-push": "yarn lint:check && yarn format:check"
 		}
 	}
 }
