@@ -22,8 +22,7 @@
 		"lint": "eslint \"./**/*.{js,ts,tsx,jsx}\" --quiet --fix",
 		"lint:check": "eslint \"./**/*.{js,ts,tsx,jsx}\" --quiet",
 		"check": "yarn run format:check && yarn run lint:check",
-		"check:fix": "yarn run format && yarn run lint",
-		"postinstall": "husky install"
+		"check:fix": "yarn run format && yarn run lint"
 	},
 	"dependencies": {
 		"@apollo/gateway": "^0.22.0",
