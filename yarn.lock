@@ -3518,6 +3518,13 @@ cross-fetch@3.0.6, cross-fetch@^3.0.4:
   dependencies:
     node-fetch "2.6.1"
 
+cross-fetch@^3.0.6:
+  version "3.1.3"
+  resolved "https://registry.yarnpkg.com/cross-fetch/-/cross-fetch-3.1.3.tgz#b8e7d5f19161c4a0ca916f707978848786043afb"
+  integrity sha512-2i6v88DTqVBNODyjD9U6Ycn/uSZNvyHe25cIbo2fFnAACAsaLTJsd23miRWiR5NuiGXR9wpJ9d40/9WAhjDIrw==
+  dependencies:
+    node-fetch "2.6.1"
+
 cross-spawn@^6.0.0:
   version "6.0.5"
   resolved "https://registry.yarnpkg.com/cross-spawn/-/cross-spawn-6.0.5.tgz#4a5ec7c64dfae22c3a14124dbacdee846d80cbc4"
@@ -4673,6 +4680,15 @@ graphql-extensions@^0.12.4, graphql-extensions@^0.12.8:
     "@apollographql/apollo-tools" "^0.4.3"
     apollo-server-env "^3.0.0"
     apollo-server-types "^0.6.3"
+
+graphql-request@^3.4.0:
+  version "3.4.0"
+  resolved "https://registry.yarnpkg.com/graphql-request/-/graphql-request-3.4.0.tgz#3a400cd5511eb3c064b1873afb059196bbea9c2b"
+  integrity sha512-acrTzidSlwAj8wBNO7Q/UQHS8T+z5qRGquCQRv9J1InwR01BBWV9ObnoE+JS5nCCEj8wSGS0yrDXVDoRiKZuOg==
+  dependencies:
+    cross-fetch "^3.0.6"
+    extract-files "^9.0.0"
+    form-data "^3.0.0"
 
 graphql-subscriptions@^1.0.0:
   version "1.1.0"
