@@ -1,0 +1,121 @@
+input CreateOrderInput {
+  cost: Float!
+  description: String!
+  seller: String!
+  title: String!
+}
+
+input CreateRatingInput {
+  description: String!
+  for: String!
+  from: String!
+  rating: Int!
+  type: RatingType!
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type Mutation {
+  addRating(object: CreateRatingInput!): User!
+  addReviewTZ(id: ID!, tz: String!): Order!
+  approveOrder(order: ID!): Order!
+  approvePurchaseRequest(order: ID!, user: ID!): Order!
+  createOrder(object: CreateOrderInput!): Order!
+  createUser(id: ID!): User!
+  generateInvoice(order: ID!): String!
+  rejectOrder(order: ID!): Order!
+  rejectPurchaseRequest(order: ID!, user: ID!): Order!
+  removePurchaseRequest(order: ID!, user: ID!): Order!
+  requestPurchase(order: ID!, tz: String!, user: ID!): Order!
+  updateOrder(object: UpdateOrderInput!, order: ID!): Order!
+}
+
+type Order {
+  approved: Boolean!
+  buyer: User
+  cost: Int!
+  created: DateTime!
+  description: String!
+  id: ID!
+  paid: Boolean!
+  requestTZs: [OrderRequest!]!
+  requests: [User!]!
+  reviewTZ: String!
+  seller: User!
+  title: String!
+}
+
+type OrderRequest {
+  id: String!
+  tz: String!
+}
+
+input PaginationInput {
+  """Page number."""
+  page: Float
+
+  """Initial offset of page."""
+  skip: Float
+
+  """Sort by a given field."""
+  sort: SortInput
+
+  """Amount of entries per page."""
+  take: Float
+}
+
+type Query {
+  bulkOrders(ids: [String!]!): [Order!]!
+  bulkRatings(ids: [String!]!): [Rating!]!
+  bulkUsers(ids: [String!]!): [User!]!
+  order(id: String!): Order!
+  orders(options: PaginationInput): [Order!]!
+  rating(id: String!): Rating!
+  ratings(options: PaginationInput): [Rating!]!
+  user(id: String!): User!
+  users(options: PaginationInput): [User!]!
+}
+
+type Rating {
+  created: DateTime!
+  description: String!
+  for: User!
+  from: User!
+  id: ID!
+  rating: Float!
+  type: RatingType!
+}
+
+enum RatingType {
+  Buying
+  Selling
+}
+
+input SortInput {
+  field: String!
+  order: SortOrder
+}
+
+enum SortOrder {
+  Asc
+  Desc
+}
+
+input UpdateOrderInput {
+  description: String!
+  title: String!
+}
+
+type User {
+  buying: [Order!]!
+  buyingRating: Float!
+  id: ID!
+  ratings: [Rating!]!
+  requests: [Order!]!
+  selling: [Order!]!
+  sellingRating: Float!
+  writtenRatings: [Rating!]!
+}
