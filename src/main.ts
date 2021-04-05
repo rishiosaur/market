@@ -2,6 +2,9 @@ import { NestFactory } from '@nestjs/core'
 import { AppModule } from './app.module'
 import { INestApplication } from '@nestjs/common'
 import * as dotenv from 'dotenv'
+import { GraphQLSchemaHost } from '@nestjs/graphql'
+import { promises as fs } from 'fs'
+import { printSchema } from 'graphql'
 
 export class App {
 	private app: INestApplication
@@ -11,6 +14,9 @@ export class App {
 	public async bootstrap(port?: number) {
 		const app = await NestFactory.create(AppModule(this.dbURL))
 		await app.listen(port ?? 3000)
+		const { schema } = app.get(GraphQLSchemaHost);
+		console.log(schema)
+		await fs.writeFile("schema.gql", printSchema(schema))
 		this.app = app
 	}
 }
