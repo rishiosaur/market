@@ -16,6 +16,7 @@ RUN yarn install
 COPY . .
 
 EXPOSE 3000
+# stuff
 
 # TODO: switch over to new yarn commands
 CMD ["yarn", "start"]
