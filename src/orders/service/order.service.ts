@@ -128,7 +128,7 @@ export class OrderService extends BaseEntityService(Order) {
 
 	// approves request, generates invoice, sends to both parties
 	public async approvePurchaseRequest(user: string, order: string) {
-		const orderEntity = await this.orders.findOneOrFail(order, { relations: ["requests"] })
+		const orderEntity = await this.orders.findOneOrFail(order, { relations: ["requests", "buyer"] })
 		const userEntity = await this.users.findOneOrFail(user, { relations: ['requests', 'buying'] })
 
 		console.log(orderEntity.requests)
