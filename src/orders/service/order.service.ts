@@ -144,7 +144,6 @@ export class OrderService extends BaseEntityService(Order) {
 		await this.orders.save(orderEntity)
 		await this.users.save(userEntity)
 
-		//HTTP reolution
 
 		return orderEntity
 	}

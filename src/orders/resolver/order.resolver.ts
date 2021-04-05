@@ -106,6 +106,21 @@ export class OrderFieldResolver {
 		return requests
 	}
 
+	@ResolveField(() => [User])
+	async buyer(@Root() order: Order) {
+		if (order.buyer) {
+			return order.buyer
+		}
+
+		const { buyer } = await this.orders.findOneOrFail(order.id, {
+			relations: ["buyer"]
+		})
+
+		return buyer
+	}
+
+
+
 
 
 }
