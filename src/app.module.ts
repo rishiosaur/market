@@ -18,6 +18,12 @@ export const AppModule = (dbURL: string): any => {
 				url: dbURL,
 				entities: [User, Order, Rating],
 				synchronize: true,
+				...(process.env.NODE_ENV === 'production'
+					? {
+						ssl: true,
+						extra: { ssl: true, rejectUnauthorized: false },
+					}
+					: {}),
 			}),
 			GraphQLModule.forRoot({
 				playground: true,
